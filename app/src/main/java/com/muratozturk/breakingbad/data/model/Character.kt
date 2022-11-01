@@ -3,8 +3,7 @@ package com.muratozturk.breakingbad.data.model
 
 import com.google.gson.annotations.SerializedName
 
-data class Characters(
-    @SerializedName("appearance")
+data class Character(
     val appearance: List<Int>,
     @SerializedName("better_call_saul_appearance")
     val betterCallSaulAppearance: List<Int>,
