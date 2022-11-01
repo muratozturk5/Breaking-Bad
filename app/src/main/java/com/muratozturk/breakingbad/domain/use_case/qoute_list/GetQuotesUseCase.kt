@@ -6,6 +6,6 @@ import javax.inject.Inject
 class GetQuotesUseCase @Inject constructor(
     private val repository: BreakingBadRepository
 ) {
-    suspend operator fun invoke(id: Int) = repository.getQuotes()
+    suspend operator fun invoke() = repository.getQuotes()
 
 }

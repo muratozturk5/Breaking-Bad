@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import com.muratozturk.breakingbad.R
+import com.muratozturk.breakingbad.common.Resource
 import com.muratozturk.breakingbad.databinding.FragmentCharacterListBinding
 import com.zhuinden.fragmentviewbindingdelegatekt.viewBinding
 import dagger.hilt.android.AndroidEntryPoint
@@ -30,14 +31,17 @@ class CharacterListFragment : Fragment(R.layout.fragment_character_list) {
         with(viewModel) {
             viewLifecycleOwner.lifecycleScope.launchWhenStarted {
                 state.collect { response ->
-                    if (response.isLoading) {
-                        Log.e("Loading", "true")
-                    } else {
-                        Log.e("Loading", "false")
+                    when (response) {
+                        is Resource.Loading -> {
+                            Log.e("Resource", "Loading")
+                        }
+                        is Resource.Success -> {
+                            Log.e("Resource", response.data.toString())
+                        }
+                        is Resource.Error -> {
+                            Log.e("Resource", response.throwable.localizedMessage ?: "")
+                        }
                     }
-
-                    Log.e("Characters", response.characters.toString())
-                    Log.e("Error", response.error)
 
                 }
 
