@@ -6,9 +6,11 @@ import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.recyclerview.widget.GridLayoutManager
 import com.muratozturk.breakingbad.R
 import com.muratozturk.breakingbad.common.Resource
 import com.muratozturk.breakingbad.databinding.FragmentCharacterListBinding
+import com.muratozturk.breakingbad.domain.model.CharacterUI
 import com.zhuinden.fragmentviewbindingdelegatekt.viewBinding
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -37,6 +39,14 @@ class CharacterListFragment : Fragment(R.layout.fragment_character_list) {
                         }
                         is Resource.Success -> {
                             Log.e("Resource", response.data.toString())
+
+                            val charactersAdapter =
+                                CharactersAdapter(response.data as ArrayList<CharacterUI>)
+                            binding.recyclerView.adapter = charactersAdapter
+                            charactersAdapter.onClick = ::clickCategory
+
+                            binding.recyclerView.layoutManager = GridLayoutManager(context, 2)
+                            binding.recyclerView.setHasFixedSize(true)
                         }
                         is Resource.Error -> {
                             Log.e("Resource", response.throwable.localizedMessage ?: "")
@@ -47,5 +57,9 @@ class CharacterListFragment : Fragment(R.layout.fragment_character_list) {
 
             }
         }
+    }
+
+    private fun clickCategory(character: CharacterUI) {
+
     }
 }
