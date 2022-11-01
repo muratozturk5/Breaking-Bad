@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+    <item
+        android:id="@+id/characterListFragment"
+        android:icon="@drawable/ic_baseline_person_24"
+        android:title="@string/characters" />
+    <item
+        android:id="@+id/episodeListFragment"
+        android:icon="@drawable/ic_baseline_format_list_bulleted_24"
+        android:title="@string/episodes" />
+    <item
+        android:id="@+id/quoteListFragment"
+        android:icon="@drawable/ic_baseline_speaker_notes_24"
+        android:title="@string/quotes" />
+
+</menu>

@@ -5,6 +5,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.muratozturk.breakingbad.common.Constants.PARAM_ID
 import com.muratozturk.breakingbad.common.Resource
+import com.muratozturk.breakingbad.domain.model.CharacterDetailUI
 import com.muratozturk.breakingbad.domain.model.CharacterUI
 import com.muratozturk.breakingbad.domain.use_case.detail.GetCharacterUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -19,7 +20,7 @@ class CharacterDetailViewModel @Inject constructor(
     savedStateHandle: SavedStateHandle
 ) : ViewModel() {
 
-    private var _state = MutableStateFlow<Resource<CharacterUI>>(Resource.Loading)
+    private var _state = MutableStateFlow<Resource<CharacterDetailUI>>(Resource.Loading)
     val state = _state.asStateFlow()
 
     init {

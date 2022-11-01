@@ -2,10 +2,12 @@ package com.muratozturk.breakingbad.data.repository
 
 
 import com.muratozturk.breakingbad.common.Resource
+import com.muratozturk.breakingbad.data.mapper.toCharacterDetailUI
 import com.muratozturk.breakingbad.data.mapper.toCharacterUI
 import com.muratozturk.breakingbad.data.mapper.toEpisodeUI
 import com.muratozturk.breakingbad.data.mapper.toQuoteUI
 import com.muratozturk.breakingbad.data.source.RemoteDataSourceImpl
+import com.muratozturk.breakingbad.domain.model.CharacterDetailUI
 import com.muratozturk.breakingbad.domain.model.CharacterUI
 import com.muratozturk.breakingbad.domain.model.EpisodeUI
 import com.muratozturk.breakingbad.domain.model.QuoteUI
@@ -28,8 +30,8 @@ class BreakingBadRepositoryImpl(private val remoteDataSource: RemoteDataSourceIm
         emit(Resource.Loading)
         try {
             emit(
-                Resource.Success(
-                    remoteDataSource.getCharacters().body()!!.map { it.toCharacterUI() })
+                Resource.Success(remoteDataSource.getCharacters().body()!!
+                    .map { it.toCharacterUI() })
             )
         } catch (t: Throwable) {
             emit(Resource.Error(t))
@@ -54,10 +56,10 @@ class BreakingBadRepositoryImpl(private val remoteDataSource: RemoteDataSourceIm
         }
     }
 
-    override suspend fun getCharacter(id: Int): Flow<Resource<CharacterUI>> = flow {
+    override suspend fun getCharacter(id: Int): Flow<Resource<CharacterDetailUI>> = flow {
         emit(Resource.Loading)
         try {
-            emit(Resource.Success(remoteDataSource.getCharacter(id).body()!!.toCharacterUI()))
+            emit(Resource.Success(remoteDataSource.getCharacter(id).body()!!.toCharacterDetailUI()))
         } catch (t: Throwable) {
             emit(Resource.Error(t))
         }
