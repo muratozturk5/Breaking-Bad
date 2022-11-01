@@ -2,19 +2,18 @@ package com.muratozturk.breakingbad.domain.repository
 
 
 import com.muratozturk.breakingbad.common.Resource
-import com.muratozturk.breakingbad.data.model.Characters
-import com.muratozturk.breakingbad.data.model.Death
-import com.muratozturk.breakingbad.data.model.Episodes
+import com.muratozturk.breakingbad.data.model.Episode
 import com.muratozturk.breakingbad.data.model.Quote
+import com.muratozturk.breakingbad.data.model.Character
+import com.muratozturk.breakingbad.domain.model.CharacterUI
+import com.muratozturk.breakingbad.domain.model.EpisodeUI
+import com.muratozturk.breakingbad.domain.model.QuoteUI
 import kotlinx.coroutines.flow.Flow
 
 interface BreakingBadRepository {
-    suspend fun getCharacters(): Flow<Resource<List<Characters>>>
-    suspend fun getEpisodes(): Flow<Resource<List<Episodes>>>
-    suspend fun getDeaths(): Flow<Resource<List<Death>>>
-    suspend fun getQuote(): Flow<Resource<List<Quote>>>
-    suspend fun getRandomCharacter(): Flow<Resource<List<Characters>>>
-    suspend fun getCharactersSearch(name: String): Flow<Resource<List<Characters>>>
-    suspend fun getCharacterDetail(id: Int): Flow<Resource<Characters>>
-    suspend fun getEpisodeDetail(id: Int): Flow<Resource<Episodes>>
+    suspend fun getEpisodes(): Flow<Resource<List<EpisodeUI>>>
+    suspend fun getCharacters(): Flow<Resource<List<CharacterUI>>>
+    suspend fun getQuotes(): Flow<Resource<List<QuoteUI>>>
+    suspend fun getEpisode(id: Int): Flow<Resource<EpisodeUI>>
+    suspend fun getCharacter(id: Int): Flow<Resource<CharacterUI>>
 }
