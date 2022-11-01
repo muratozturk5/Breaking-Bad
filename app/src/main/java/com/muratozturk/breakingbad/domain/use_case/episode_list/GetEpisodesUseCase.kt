@@ -6,6 +6,6 @@ import javax.inject.Inject
 class GetEpisodesUseCase @Inject constructor(
     private val repository: BreakingBadRepository
 ) {
-    suspend operator fun invoke(id: Int) = repository.getEpisodes()
+    suspend operator fun invoke() = repository.getEpisodes()
 
 }

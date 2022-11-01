@@ -1,11 +1,14 @@
-package com.muratozturk.breakingbadkotlin.presentation.quotes_list
+package com.muratozturk.breakingbad.ui.quotes_list
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.muratozturk.breakingbadkotlin.common.Resource
-import com.muratozturk.breakingbadkotlin.domain.use_case.get_quotes.GetQuotesUseCase
+import com.muratozturk.breakingbad.common.Resource
+import com.muratozturk.breakingbad.domain.model.EpisodeUI
+import com.muratozturk.breakingbad.domain.model.QuoteUI
+import com.muratozturk.breakingbad.domain.use_case.qoute_list.GetQuotesUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.*
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
@@ -13,26 +16,17 @@ class QuoteListViewModel @Inject constructor(
     private val getQuotesUseCase: GetQuotesUseCase
 ) : ViewModel() {
 
-    private var _state = MutableStateFlow(QuoteListState())
-    val state: StateFlow<QuoteListState> = _state.asStateFlow()
+    private var _state = MutableStateFlow<Resource<List<QuoteUI>>>(Resource.Loading)
+    val state = _state.asStateFlow()
+
 
     init {
         getQuotes()
     }
 
-    private fun getQuotes() {
-        getQuotesUseCase().onEach { result ->
-            when (result) {
-                is Resource.Success -> {
-                    _state.value = QuoteListState(characters = result.data)
-                }
-                is Resource.Error -> {
-                    _state.value = QuoteListState(error = result.throwable.localizedMessage ?: "")
-                }
-                is Resource.Loading -> {
-                    _state.value = QuoteListState(isLoading = true)
-                }
-            }
-        }.launchIn(viewModelScope)
+    private fun getQuotes() = viewModelScope.launch {
+        getQuotesUseCase().collect {
+            _state.emit(it)
+        }
     }
 }
