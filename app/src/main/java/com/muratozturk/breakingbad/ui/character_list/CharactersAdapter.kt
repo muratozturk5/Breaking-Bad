@@ -13,7 +13,7 @@ class CharactersAdapter(private var characterList: ArrayList<CharacterUI>) :
     class ProductsViewHolder(val itemBinding: ItemCharacterBinding) :
         RecyclerView.ViewHolder(itemBinding.root)
 
-    var onClick: (CharacterUI) -> Unit = {}
+    var onClick: (Int) -> Unit = {}
 
     override fun onCreateViewHolder(
         parent: ViewGroup, viewType: Int
@@ -29,9 +29,8 @@ class CharactersAdapter(private var characterList: ArrayList<CharacterUI>) :
         holder.itemBinding.apply {
             text.text = item.name
             imageView.glideImage(item.img)
-            root.setOnClickListener { onClick(item) }
+            root.setOnClickListener { onClick(item.charId) }
         }
-
     }
 
     override fun getItemCount(): Int {

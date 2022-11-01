@@ -1,14 +1,13 @@
 package com.muratozturk.breakingbad.ui.character_list
 
-import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.muratozturk.breakingbad.common.Constants
 import com.muratozturk.breakingbad.common.Resource
 import com.muratozturk.breakingbad.domain.model.CharacterUI
 import com.muratozturk.breakingbad.domain.use_case.character_list.GetCharactersUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.flow.*
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 

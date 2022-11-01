@@ -8,6 +8,29 @@
     <fragment
         android:id="@+id/characterListFragment"
         android:name="com.muratozturk.breakingbad.ui.character_list.CharacterListFragment"
-        android:label="fragment_character_list"
-        tools:layout="@layout/fragment_character_list" />
+        android:label="@string/characters"
+        tools:layout="@layout/fragment_character_list">
+        <action
+            android:id="@+id/action_characterListFragment_to_characterDetailFragment"
+            app:destination="@id/characterDetailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/episodeListFragment"
+        android:name="com.muratozturk.breakingbad.ui.episode_list.EpisodeListFragment"
+        android:label="@string/episodes"
+        tools:layout="@layout/fragment_episode_list" />
+    <fragment
+        android:id="@+id/quoteListFragment"
+        android:name="com.muratozturk.breakingbad.ui.quotes_list.QuoteListFragment"
+        android:label="@string/quotes"
+        tools:layout="@layout/fragment_quote_list" />
+    <fragment
+        android:id="@+id/characterDetailFragment"
+        android:name="com.muratozturk.breakingbad.ui.character_detail.CharacterDetailFragment"
+        android:label=""
+        tools:layout="@layout/fragment_character_detail" >
+        <argument
+            android:name="id"
+            app:argType="integer" />
+    </fragment>
 </navigation>
