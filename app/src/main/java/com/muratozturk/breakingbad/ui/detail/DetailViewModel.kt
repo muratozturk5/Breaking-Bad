@@ -8,6 +8,9 @@ import com.muratozturk.breakingbad.common.Resource
 import com.muratozturk.breakingbad.data.model.Characters
 import com.muratozturk.breakingbad.domain.repository.BreakingBadRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -15,13 +18,16 @@ import javax.inject.Inject
 class DetailViewModel @Inject constructor(private val remoteRepositoryImpl: BreakingBadRepository) :
     ViewModel() {
 
-    private var _character = MutableLiveData<Resource<Characters>>(Resource.Loading)
-    val character: LiveData<Resource<Characters>> = _character
+    private var _character = MutableStateFlow<Resource<Characters>>(Resource.Loading)
+    val character = _character.asStateFlow()
 
 
-    fun getCharacter(id:Int) {
+    fun getCharacter(id: Int) {
         viewModelScope.launch {
-            _character = remoteRepositoryImpl.getCharacterDetail(id)
+            remoteRepositoryImpl.getCharacterDetail(id).collect {
+                _character.emit(it)
+            }
+
         }
 
     }

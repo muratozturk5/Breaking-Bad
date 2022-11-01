@@ -8,25 +8,25 @@ import com.muratozturk.breakingbad.domain.source.RemoteDataSource
 import retrofit2.Response
 import javax.inject.Inject
 
-class RemoteDataSourceImpl @Inject constructor(private val foodService: BreakingBadService) : RemoteDataSource {
+class RemoteDataSourceImpl @Inject constructor(private val remoteService: BreakingBadService) : RemoteDataSource {
 
-    override suspend fun getCharacters(): Response<List<Characters>> = foodService.getCharacters()
+    override suspend fun getCharacters(): Response<List<Characters>> = remoteService.getCharacters()
 
-    override suspend fun getEpisode(): Response<List<Episodes>> = foodService.getEpisodes()
+    override suspend fun getEpisode(): Response<List<Episodes>> = remoteService.getEpisodes()
 
-    override suspend fun getDeath(): Response<List<Death>> = foodService.getDeath()
+    override suspend fun getDeath(): Response<List<Death>> = remoteService.getDeath()
 
-    override suspend fun getQuote(): Response<List<Quote>> = foodService.getQuote()
+    override suspend fun getQuote(): Response<List<Quote>> = remoteService.getQuote()
 
     override suspend fun getRandomCharacters(): Response<List<Characters>> =
-        foodService.getRandomCharacter()
+        remoteService.getRandomCharacter()
 
     override suspend fun getCharactersSearch(name: String): Response<List<Characters>> =
-        foodService.getCharactersSearch(name)
+        remoteService.getCharactersSearch(name)
 
     override suspend fun getCharacterDetail(id: Int): Response<Characters> =
-        foodService.getCharacterDetail(id)
+        remoteService.getCharacterDetail(id)
 
     override suspend fun getEpisodeDetail(id: Int): Response<Episodes> =
-        foodService.getEpisodeDetail(id)
+        remoteService.getEpisodeDetail(id)
 }

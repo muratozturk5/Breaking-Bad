@@ -9,4 +9,6 @@ import javax.inject.Inject
 @HiltViewModel
 class HomeViewModel @Inject constructor(private val remoteRepositoryImpl: BreakingBadRepository) :
     ViewModel() {
+
+        
 }

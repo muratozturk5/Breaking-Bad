@@ -1,6 +1,6 @@
 package com.muratozturk.breakingbad.di
 
-import android.app.Application
+
 import com.muratozturk.breakingbad.data.repository.BreakingBadRepositoryImpl
 import com.muratozturk.breakingbad.data.source.RemoteDataSourceImpl
 import com.muratozturk.breakingbad.domain.repository.BreakingBadRepository
@@ -15,5 +15,6 @@ import javax.inject.Singleton
 object RepositoryModule {
     @Provides
     @Singleton
-    fun providesFoodRepository(remoteDataSource: RemoteDataSourceImpl): BreakingBadRepository = BreakingBadRepositoryImpl(remoteDataSource)
+    fun providesFoodRepository(remoteDataSource: RemoteDataSourceImpl): BreakingBadRepository =
+        BreakingBadRepositoryImpl(remoteDataSource)
 }
