@@ -26,5 +26,5 @@ interface BreakingBadService {
     suspend fun getEpisode(@Path("id") id: Int): Response<Episode>
 
     @GET(CHARACTERS_DETAIL)
-    suspend fun getCharacter(@Path("id") id: Int): Response<Character>
+    suspend fun getCharacter(@Path("id") id: Int): Response<List<Character>>
 }

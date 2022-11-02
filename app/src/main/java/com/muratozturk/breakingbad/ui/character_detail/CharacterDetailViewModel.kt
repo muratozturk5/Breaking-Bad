@@ -6,7 +6,6 @@ import androidx.lifecycle.viewModelScope
 import com.muratozturk.breakingbad.common.Constants.PARAM_ID
 import com.muratozturk.breakingbad.common.Resource
 import com.muratozturk.breakingbad.domain.model.CharacterDetailUI
-import com.muratozturk.breakingbad.domain.model.CharacterUI
 import com.muratozturk.breakingbad.domain.use_case.detail.GetCharacterUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow

@@ -6,12 +6,9 @@ import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
-import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.muratozturk.breakingbad.R
 import com.muratozturk.breakingbad.common.Resource
 import com.muratozturk.breakingbad.databinding.FragmentCharacterListBinding
-import com.muratozturk.breakingbad.domain.model.CharacterUI
-import com.muratozturk.breakingbad.ui.character_list.CharactersAdapter
 import com.zhuinden.fragmentviewbindingdelegatekt.viewBinding
 import dagger.hilt.android.AndroidEntryPoint
 
