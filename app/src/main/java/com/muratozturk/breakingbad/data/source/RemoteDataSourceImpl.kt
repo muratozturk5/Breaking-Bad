@@ -1,32 +1,32 @@
 package com.muratozturk.breakingbad.data.source
 
-import com.muratozturk.breakingbad.data.model.Characters
-import com.muratozturk.breakingbad.data.model.Death
-import com.muratozturk.breakingbad.data.model.Episodes
+import com.muratozturk.breakingbad.data.model.Character
+import com.muratozturk.breakingbad.data.model.Episode
 import com.muratozturk.breakingbad.data.model.Quote
 import com.muratozturk.breakingbad.domain.source.RemoteDataSource
 import retrofit2.Response
 import javax.inject.Inject
 
-class RemoteDataSourceImpl @Inject constructor(private val foodService: BreakingBadService) : RemoteDataSource {
+class RemoteDataSourceImpl @Inject constructor(private val remoteService: BreakingBadService) :
+    RemoteDataSource {
+    override suspend fun getEpisodes(): Response<List<Episode>> {
+        return remoteService.getEpisodes()
+    }
 
-    override suspend fun getCharacters(): Response<List<Characters>> = foodService.getCharacters()
+    override suspend fun getCharacters(): Response<List<Character>> {
+        return remoteService.getCharacters()
+    }
 
-    override suspend fun getEpisode(): Response<List<Episodes>> = foodService.getEpisodes()
+    override suspend fun getQuotes(): Response<List<Quote>> {
+        return remoteService.getQuotes()
+    }
 
-    override suspend fun getDeath(): Response<List<Death>> = foodService.getDeath()
+    override suspend fun getEpisode(id: Int): Response<Episode> {
+        return remoteService.getEpisode(id)
+    }
 
-    override suspend fun getQuote(): Response<List<Quote>> = foodService.getQuote()
+    override suspend fun getCharacter(id: Int): Response<List<Character>> {
+        return remoteService.getCharacter(id)
+    }
 
-    override suspend fun getRandomCharacters(): Response<List<Characters>> =
-        foodService.getRandomCharacter()
-
-    override suspend fun getCharactersSearch(name: String): Response<List<Characters>> =
-        foodService.getCharactersSearch(name)
-
-    override suspend fun getCharacterDetail(id: Int): Response<Characters> =
-        foodService.getCharacterDetail(id)
-
-    override suspend fun getEpisodeDetail(id: Int): Response<Episodes> =
-        foodService.getEpisodeDetail(id)
 }

@@ -1,19 +1,17 @@
 package com.muratozturk.breakingbad.domain.repository
 
-import androidx.lifecycle.MutableLiveData
+
 import com.muratozturk.breakingbad.common.Resource
-import com.muratozturk.breakingbad.data.model.Characters
-import com.muratozturk.breakingbad.data.model.Death
-import com.muratozturk.breakingbad.data.model.Episodes
-import com.muratozturk.breakingbad.data.model.Quote
+import com.muratozturk.breakingbad.domain.model.CharacterDetailUI
+import com.muratozturk.breakingbad.domain.model.CharacterUI
+import com.muratozturk.breakingbad.domain.model.EpisodeUI
+import com.muratozturk.breakingbad.domain.model.QuoteUI
+import kotlinx.coroutines.flow.Flow
 
 interface BreakingBadRepository {
-    suspend fun getCharacters(): MutableLiveData<Resource<List<Characters>>>
-    suspend fun getEpisodes(): MutableLiveData<Resource<List<Episodes>>>
-    suspend fun getDeaths(): MutableLiveData<Resource<List<Death>>>
-    suspend fun getQuote(): MutableLiveData<Resource<List<Quote>>>
-    suspend fun getRandomCharacter(): MutableLiveData<Resource<List<Characters>>>
-    suspend fun getCharactersSearch(name: String): MutableLiveData<Resource<List<Characters>>>
-    suspend fun getCharacterDetail(id: Int): MutableLiveData<Resource<Characters>>
-    suspend fun getEpisodeDetail(id: Int): MutableLiveData<Resource<Episodes>>
+    suspend fun getEpisodes(): Flow<Resource<List<EpisodeUI>>>
+    suspend fun getCharacters(): Flow<Resource<List<CharacterUI>>>
+    suspend fun getQuotes(): Flow<Resource<List<QuoteUI>>>
+    suspend fun getEpisode(id: Int): Flow<Resource<EpisodeUI>>
+    suspend fun getCharacter(id: Int): Flow<Resource<CharacterDetailUI>>
 }

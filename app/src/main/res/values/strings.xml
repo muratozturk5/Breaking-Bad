@@ -1,5 +1,9 @@
 <resources>
-    <string name="app_name">BreakingBad</string>
+    <string name="app_name">Breaking Bad Kotlin</string>
+    <string name="image">Photo</string>
+    <string name="characters">Characters</string>
+    <string name="episodes">Episodes</string>
+    <string name="quotes">Quotes</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

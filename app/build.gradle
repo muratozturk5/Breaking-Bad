@@ -22,6 +22,10 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
+    buildFeatures {
+        viewBinding true
+    }
+
     buildTypes {
         release {
             minifyEnabled false
@@ -79,6 +83,9 @@ dependencies {
     // Shimmer Effect
     implementation 'com.facebook.shimmer:shimmer:0.5.0'
 
+    // Smooth BottomBar
+    implementation 'com.github.ibrahimsn98:SmoothBottomBar:1.7.9'
+    
     // Motion Toast
     implementation 'com.github.Spikeysanju:MotionToast:1.4'
 
