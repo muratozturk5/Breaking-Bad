@@ -11,11 +11,7 @@ import com.muratozturk.breakingbad.domain.model.QuoteUI
 
 fun Episode.toEpisodeUI(): EpisodeUI {
     return EpisodeUI(
-        airDate = airDate,
-        episode = episode,
         episodeId = episodeId,
-        season = season,
-        series = series,
         title = title
     )
 }

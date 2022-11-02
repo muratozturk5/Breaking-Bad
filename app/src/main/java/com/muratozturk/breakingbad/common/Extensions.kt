@@ -11,7 +11,7 @@ import com.muratozturk.breakingbad.R
 fun Context.circularProgressDrawable(): Drawable {
     return CircularProgressDrawable(this).apply {
         strokeWidth = 5f
-        centerRadius = 40f
+        centerRadius = 80f
         start()
     }
 }
