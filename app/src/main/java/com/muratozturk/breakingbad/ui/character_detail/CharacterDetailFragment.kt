@@ -11,7 +11,6 @@ import com.muratozturk.breakingbad.common.LoadingScreen
 import com.muratozturk.breakingbad.common.Resource
 import com.muratozturk.breakingbad.common.glideImage
 import com.muratozturk.breakingbad.databinding.FragmentCharacterDetailBinding
-import com.muratozturk.breakingbad.databinding.FragmentCharacterListBinding
 import com.zhuinden.fragmentviewbindingdelegatekt.viewBinding
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -28,24 +27,19 @@ class CharacterDetailFragment : Fragment(R.layout.fragment_character_detail) {
     }
 
     private fun collectData() {
-        with(viewModel)
-        {
+        with(viewModel) {
             viewLifecycleOwner.lifecycleScope.launchWhenStarted {
                 state.collect { response ->
                     when (response) {
                         is Resource.Loading -> {
                             LoadingScreen.displayLoadingWithText(
-                                requireContext(),
-                                resources.getString(R.string.please_wait),
-                                false
+                                requireContext(), resources.getString(R.string.please_wait), false
                             )
                         }
                         is Resource.Success -> {
                             LoadingScreen.hideLoading()
-                            with(binding)
-                            {
-                                with(response.data)
-                                {
+                            with(binding) {
+                                with(response.data) {
                                     imageView.glideImage(img)
                                     imageViewBanner.glideImage(img, true)
                                     textView.text = name
