@@ -5,6 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.muratozturk.breakingbad.databinding.ItemEpisodeBinding
 import com.muratozturk.breakingbad.domain.model.EpisodeUI
+import com.muratozturk.click_shrink_effect.applyClickShrink
 
 class EpisodeAdapter(private val episode: List<EpisodeUI>) :
     RecyclerView.Adapter<EpisodeAdapter.ViewHolder>() {
@@ -16,6 +17,7 @@ class EpisodeAdapter(private val episode: List<EpisodeUI>) :
                 with(item) {
                     productCount.text = episodeId.toString()
                     productText.text = title
+                    root.applyClickShrink()
                 }
             }
         }

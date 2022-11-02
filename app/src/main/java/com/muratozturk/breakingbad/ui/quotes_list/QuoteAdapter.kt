@@ -5,6 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.muratozturk.breakingbad.databinding.ItemQuoteBinding
 import com.muratozturk.breakingbad.domain.model.QuoteUI
+import com.muratozturk.click_shrink_effect.applyClickShrink
 
 class QuoteAdapter(private val quote: List<QuoteUI>) :
     RecyclerView.Adapter<QuoteAdapter.ViewHolder>() {
@@ -15,6 +16,7 @@ class QuoteAdapter(private val quote: List<QuoteUI>) :
                 with(item) {
                     quoteCount.text = author
                     quoteText.text = quote
+                    root.applyClickShrink()
                 }
             }
         }

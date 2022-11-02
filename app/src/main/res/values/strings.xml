@@ -4,6 +4,13 @@
     <string name="characters">Characters</string>
     <string name="episodes">Episodes</string>
     <string name="quotes">Quotes</string>
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="character_detail">Character Detail</string>
+    <string name="nick_name">Nickname :</string>
+    <string name="birthdate">Birthdate :</string>
+    <string name="status">Status :</string>
+    <string name="appearance">Appearance :</string>
+    <string name="occupation">Occupation :</string>
+    <string name="portrayed">Portrayed :</string>
+    <string name="please_wait">Lütfen Bekleyiniz ...</string>
 </resources>

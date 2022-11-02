@@ -27,8 +27,8 @@
     <fragment
         android:id="@+id/characterDetailFragment"
         android:name="com.muratozturk.breakingbad.ui.character_detail.CharacterDetailFragment"
-        android:label=""
-        tools:layout="@layout/fragment_character_detail" >
+        android:label="@string/character_detail"
+        tools:layout="@layout/fragment_character_detail">
         <argument
             android:name="id"
             app:argType="integer" />

@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import com.muratozturk.breakingbad.R
+import com.muratozturk.breakingbad.common.LoadingScreen
 import com.muratozturk.breakingbad.common.Resource
 import com.muratozturk.breakingbad.databinding.FragmentQuoteListBinding
 import com.zhuinden.fragmentviewbindingdelegatekt.viewBinding
@@ -29,14 +30,19 @@ class QuoteListFragment : Fragment(R.layout.fragment_quote_list) {
                     state.collect { response ->
                         when (response) {
                             is Resource.Loading -> {
-                                Log.i("Resource", "Loading")
+                                LoadingScreen.displayLoadingWithText(
+                                    requireContext(),
+                                    resources.getString(R.string.please_wait),
+                                    false
+                                )
                             }
                             is Resource.Success -> {
-                                Log.e("Resource", response.data.toString())
+                                LoadingScreen.hideLoading()
                                 val adapter = QuoteAdapter(response.data)
                                 binding.quoteRecycler.adapter = adapter
                             }
                             is Resource.Error -> {
+                                LoadingScreen.hideLoading()
                                 Log.e("Resource", response.throwable.localizedMessage ?: "")
                             }
                         }
