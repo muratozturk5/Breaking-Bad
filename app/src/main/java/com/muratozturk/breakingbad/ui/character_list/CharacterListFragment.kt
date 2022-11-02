@@ -10,6 +10,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.muratozturk.breakingbad.R
+import com.muratozturk.breakingbad.common.LoadingScreen
 import com.muratozturk.breakingbad.common.Resource
 import com.muratozturk.breakingbad.databinding.FragmentCharacterListBinding
 import com.muratozturk.breakingbad.domain.model.CharacterUI
@@ -25,10 +26,7 @@ class CharacterListFragment : Fragment(R.layout.fragment_character_list) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        with(binding) {
-            collectData()
-        }
-
+        collectData()
     }
 
     private fun collectData() {
@@ -37,10 +35,14 @@ class CharacterListFragment : Fragment(R.layout.fragment_character_list) {
                 state.collect { response ->
                     when (response) {
                         is Resource.Loading -> {
-                            Log.e("Resource", "Loading")
+                            LoadingScreen.displayLoadingWithText(
+                                requireContext(),
+                                resources.getString(R.string.please_wait),
+                                false
+                            )
                         }
                         is Resource.Success -> {
-                            Log.e("Resource", response.data.toString())
+                            LoadingScreen.hideLoading()
 
                             val charactersAdapter =
                                 CharactersAdapter(response.data as ArrayList<CharacterUI>)
@@ -52,6 +54,7 @@ class CharacterListFragment : Fragment(R.layout.fragment_character_list) {
                             binding.recyclerView.setHasFixedSize(true)
                         }
                         is Resource.Error -> {
+                            LoadingScreen.hideLoading()
                             Log.e("Resource", response.throwable.localizedMessage ?: "")
                         }
                     }

@@ -101,6 +101,10 @@ dependencies {
     //Glide
     implementation 'com.github.bumptech.glide:glide:4.14.2'
     annotationProcessor 'com.github.bumptech.glide:compiler:4.14.2'
+    implementation 'jp.wasabeef:glide-transformations:4.3.0'
+
+    //Click Shrink Effect
+    implementation 'com.github.muratozturk5:ClickShrinkEffectLibrary:1.2.0'
 
     //Hilt
     implementation 'com.google.dagger:hilt-android:2.44'
