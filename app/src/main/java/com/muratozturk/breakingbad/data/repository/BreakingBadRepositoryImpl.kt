@@ -1,6 +1,7 @@
 package com.muratozturk.breakingbad.data.repository
 
 
+import android.util.Log
 import com.muratozturk.breakingbad.common.Resource
 import com.muratozturk.breakingbad.data.mapper.toCharacterDetailUI
 import com.muratozturk.breakingbad.data.mapper.toCharacterUI
@@ -59,7 +60,11 @@ class BreakingBadRepositoryImpl(private val remoteDataSource: RemoteDataSourceIm
     override suspend fun getCharacter(id: Int): Flow<Resource<CharacterDetailUI>> = flow {
         emit(Resource.Loading)
         try {
-            emit(Resource.Success(remoteDataSource.getCharacter(id).body()!!.toCharacterDetailUI()))
+            emit(
+                Resource.Success(
+                    remoteDataSource.getCharacter(id).body()!![0].toCharacterDetailUI()
+                )
+            )
         } catch (t: Throwable) {
             emit(Resource.Error(t))
         }

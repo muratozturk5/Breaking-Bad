@@ -40,6 +40,8 @@ class CharacterListFragment : Fragment(R.layout.fragment_character_list) {
                             Log.e("Resource", "Loading")
                         }
                         is Resource.Success -> {
+                            Log.e("Resource", response.data.toString())
+
                             val charactersAdapter =
                                 CharactersAdapter(response.data as ArrayList<CharacterUI>)
                             binding.recyclerView.adapter = charactersAdapter

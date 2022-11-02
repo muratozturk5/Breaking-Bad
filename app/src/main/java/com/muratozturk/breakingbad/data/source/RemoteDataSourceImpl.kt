@@ -25,7 +25,7 @@ class RemoteDataSourceImpl @Inject constructor(private val remoteService: Breaki
         return remoteService.getEpisode(id)
     }
 
-    override suspend fun getCharacter(id: Int): Response<Character> {
+    override suspend fun getCharacter(id: Int): Response<List<Character>> {
         return remoteService.getCharacter(id)
     }
 
