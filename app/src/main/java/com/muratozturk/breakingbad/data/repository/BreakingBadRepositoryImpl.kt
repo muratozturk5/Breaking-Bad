@@ -1,22 +1,21 @@
 package com.muratozturk.breakingbad.data.repository
 
 
-import android.util.Log
 import com.muratozturk.breakingbad.common.Resource
 import com.muratozturk.breakingbad.data.mapper.toCharacterDetailUI
 import com.muratozturk.breakingbad.data.mapper.toCharacterUI
 import com.muratozturk.breakingbad.data.mapper.toEpisodeUI
 import com.muratozturk.breakingbad.data.mapper.toQuoteUI
-import com.muratozturk.breakingbad.data.source.RemoteDataSourceImpl
 import com.muratozturk.breakingbad.domain.model.CharacterDetailUI
 import com.muratozturk.breakingbad.domain.model.CharacterUI
 import com.muratozturk.breakingbad.domain.model.EpisodeUI
 import com.muratozturk.breakingbad.domain.model.QuoteUI
 import com.muratozturk.breakingbad.domain.repository.BreakingBadRepository
+import com.muratozturk.breakingbad.domain.source.RemoteDataSource
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 
-class BreakingBadRepositoryImpl(private val remoteDataSource: RemoteDataSourceImpl) :
+class BreakingBadRepositoryImpl(private val remoteDataSource: RemoteDataSource) :
     BreakingBadRepository {
     override suspend fun getEpisodes(): Flow<Resource<List<EpisodeUI>>> = flow {
         emit(Resource.Loading)
