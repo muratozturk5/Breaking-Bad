@@ -7,7 +7,7 @@ import com.muratozturk.breakingbad.domain.source.RemoteDataSource
 import retrofit2.Response
 import javax.inject.Inject
 
-class RemoteDataSourceImpl @Inject constructor(private val remoteService: BreakingBadService) :
+class RemoteDataSourceImpl(private val remoteService: BreakingBadService) :
     RemoteDataSource {
     override suspend fun getEpisodes(): Response<List<Episode>> {
         return remoteService.getEpisodes()
