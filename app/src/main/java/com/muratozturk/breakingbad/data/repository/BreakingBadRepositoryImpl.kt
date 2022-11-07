@@ -1,7 +1,6 @@
 package com.muratozturk.breakingbad.data.repository
 
 
-import android.util.Log
 import com.muratozturk.breakingbad.common.Resource
 import com.muratozturk.breakingbad.data.mapper.toCharacterDetailUI
 import com.muratozturk.breakingbad.data.mapper.toCharacterUI
@@ -21,7 +20,7 @@ class BreakingBadRepositoryImpl(private val remoteDataSource: RemoteDataSourceIm
     override suspend fun getEpisodes(): Flow<Resource<List<EpisodeUI>>> = flow {
         emit(Resource.Loading)
         try {
-            emit(Resource.Success(remoteDataSource.getEpisodes().body()!!.map { it.toEpisodeUI() }))
+            emit(Resource.Success(remoteDataSource.getEpisodes().map { it.toEpisodeUI() }))
         } catch (t: Throwable) {
             emit(Resource.Error(t))
         }
@@ -31,7 +30,7 @@ class BreakingBadRepositoryImpl(private val remoteDataSource: RemoteDataSourceIm
         emit(Resource.Loading)
         try {
             emit(
-                Resource.Success(remoteDataSource.getCharacters().body()!!
+                Resource.Success(remoteDataSource.getCharacters()
                     .map { it.toCharacterUI() })
             )
         } catch (t: Throwable) {
@@ -42,7 +41,7 @@ class BreakingBadRepositoryImpl(private val remoteDataSource: RemoteDataSourceIm
     override suspend fun getQuotes(): Flow<Resource<List<QuoteUI>>> = flow {
         emit(Resource.Loading)
         try {
-            emit(Resource.Success(remoteDataSource.getQuotes().body()!!.map { it.toQuoteUI() }))
+            emit(Resource.Success(remoteDataSource.getQuotes().map { it.toQuoteUI() }))
         } catch (t: Throwable) {
             emit(Resource.Error(t))
         }
@@ -51,7 +50,7 @@ class BreakingBadRepositoryImpl(private val remoteDataSource: RemoteDataSourceIm
     override suspend fun getEpisode(id: Int): Flow<Resource<EpisodeUI>> = flow {
         emit(Resource.Loading)
         try {
-            emit(Resource.Success(remoteDataSource.getEpisode(id).body()!!.toEpisodeUI()))
+            emit(Resource.Success(remoteDataSource.getEpisode(id).toEpisodeUI()))
         } catch (t: Throwable) {
             emit(Resource.Error(t))
         }
@@ -62,7 +61,7 @@ class BreakingBadRepositoryImpl(private val remoteDataSource: RemoteDataSourceIm
         try {
             emit(
                 Resource.Success(
-                    remoteDataSource.getCharacter(id).body()!![0].toCharacterDetailUI()
+                    remoteDataSource.getCharacter(id)[0].toCharacterDetailUI()
                 )
             )
         } catch (t: Throwable) {

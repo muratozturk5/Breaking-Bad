@@ -8,23 +8,22 @@ import com.muratozturk.breakingbad.common.Constants.QUOTE
 import com.muratozturk.breakingbad.data.model.Character
 import com.muratozturk.breakingbad.data.model.Episode
 import com.muratozturk.breakingbad.data.model.Quote
-import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Path
 
 interface BreakingBadService {
     @GET(EPISODES)
-    suspend fun getEpisodes(): Response<List<Episode>>
+    suspend fun getEpisodes(): List<Episode>
 
     @GET(CHARACTERS)
-    suspend fun getCharacters(): Response<List<Character>>
+    suspend fun getCharacters(): List<Character>
 
     @GET(QUOTE)
-    suspend fun getQuotes(): Response<List<Quote>>
+    suspend fun getQuotes(): List<Quote>
 
     @GET(EPISODES_DETAIL)
-    suspend fun getEpisode(@Path("id") id: Int): Response<Episode>
+    suspend fun getEpisode(@Path("id") id: Int): Episode
 
     @GET(CHARACTERS_DETAIL)
-    suspend fun getCharacter(@Path("id") id: Int): Response<List<Character>>
+    suspend fun getCharacter(@Path("id") id: Int): List<Character>
 }
