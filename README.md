@@ -1,5 +1,5 @@
 ![App Screenshot](https://github.com/muratozturk5/Breaking-Bad/blob/master/Screenshots/BannerImage.png)
-![](https://vbr.wocr.tk/badge?page_id=braking-bad-android&color=55acb7&style=for-the-badge&logo=Github)
+![](https://komarev.com/ghpvc/?username=braking-bad-android&color=55acb7&style=for-the-badge&logo=Github&label=Views)
 
 # Breaking Bad Application Kotlin
 
